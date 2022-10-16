@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const json5 = require('json5');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -20,7 +21,18 @@ module.exports = {
         test: /\.ts?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.json5$/i,
+        type: 'json',
+        parser: {
+          parse: json5.parse,
+        },
+      },
     ],
   },
   resolve: {
@@ -32,7 +44,7 @@ module.exports = {
     },
     open: true,
     liveReload: true,
-    watchFiles: ['src/', 'dist/'],
+    watchFiles: ['src/', 'assets/', 'dist/'],
     compress: true,
     port: 8000,
   },
