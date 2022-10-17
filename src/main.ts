@@ -1,4 +1,10 @@
 import { Application } from "pixi.js";
 
-const app = new Application({ backgroundColor: 0x000000, width: 800, height: 800 });
+const app = new Application({
+    width: 512,
+    height: 512,
+    antialias: true,
+    transparent: false,
+    resolution: 1
+});
 document.body.appendChild(app.view);
