@@ -1,6 +1,7 @@
 import { Application, Sprite } from "pixi.js";
 import { AssetLoader } from "./asset-loader";
 import { assets_location } from "./config";
+import { Scene } from "./scene";
 
 const app = new Application({
     width: 512,
@@ -17,9 +18,17 @@ AssetLoader.getInstance().load(assets_location, 'base_assets')
 
 
 function init() {
+    const gameScene = new Scene();
+    app.stage.addChild(gameScene);
+
     const dungeonTexture = AssetLoader.getInstance().get('dungeon.png');
     const bgSprite = Sprite.from(dungeonTexture);
-    app.stage.addChild(bgSprite);
+
+    gameScene.addChild(bgSprite);
+
+    const gameOverScene = new Scene();
+    gameOverScene.visible = false;
+    app.stage.addChild(gameOverScene);
 }
 
 function gameLoop() {
