@@ -9,7 +9,7 @@
 */
 
 import { Loader, Resource, Texture } from "pixi.js";
-import { ASSETS_JSON, assets } from "./config";
+import { assets } from "./config";
 
 export class AssetLoader {
     private static instance: AssetLoader;
