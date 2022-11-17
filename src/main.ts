@@ -3,6 +3,8 @@ import { AssetLoader } from "./asset-loader";
 import { assets_location } from "./config";
 import { Door } from "./door";
 import { Dungeon } from "./dungeon";
+import { Explorer } from "./explorer";
+import { Key } from "./key";
 import { Scene } from "./scene";
 
 const app = new Application({
@@ -28,6 +30,9 @@ function init() {
 
     const door = new Door(32, 0);
     gameScene.addChild(door);
+
+    const explorer = new Explorer(68, gameScene.height / 2);
+    gameScene.addChild(explorer);
 
     const gameOverScene = new Scene();
     gameOverScene.visible = false;
