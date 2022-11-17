@@ -6,6 +6,7 @@ import { Dungeon } from "./dungeon";
 import { Explorer } from "./explorer";
 import { Key } from "./key";
 import { Scene } from "./scene";
+import { Treasure } from "./treasure";
 
 const app = new Application({
     width: 512,
@@ -33,6 +34,9 @@ function init() {
 
     const explorer = new Explorer(68, gameScene.height / 2);
     gameScene.addChild(explorer);
+
+    const treasure = new Treasure(gameScene.width - 48, gameScene.height / 2);
+    gameScene.addChild(treasure);
 
     const gameOverScene = new Scene();
     gameOverScene.visible = false;
