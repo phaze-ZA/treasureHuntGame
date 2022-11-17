@@ -1,5 +1,6 @@
 import { Application, Sprite } from "pixi.js";
 import { AssetLoader } from "./asset-loader";
+import { Monster } from "./monster";
 import { assets_location } from "./config";
 import { Door } from "./door";
 import { Dungeon } from "./dungeon";
@@ -37,6 +38,25 @@ function init() {
 
     const treasure = new Treasure(gameScene.width - 48, gameScene.height / 2);
     gameScene.addChild(treasure);
+
+    const numMonsters = 6,
+          spacing = 48,
+          xOffset = 150,
+          speed = 2;
+
+    let direction = 1;
+
+    const monsters = [];
+
+    for (let i = 0; i < numMonsters; i++) {
+        const x = spacing * i + xOffset;
+        const y = Math.floor(Math.random() * app.stage.height)
+        const monster = new Monster(x, y);
+        monster.vy = speed * direction;
+        direction *= -1;
+        monsters.push(monster);
+        gameScene.addChild(monster);
+    }
 
     const gameOverScene = new Scene();
     gameOverScene.visible = false;
