@@ -3,8 +3,8 @@ import { AssetLoader } from "./asset-loader";
 import { GameObject } from "./game-object";
 
 export class Explorer extends GameObject {
-    private vx: number;
-    private vy: number;
+    vx: number;
+    vy: number;
     constructor(x: number, y: number) {
         super(x, y);
         this.vx = 0;
