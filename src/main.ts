@@ -1,6 +1,7 @@
 import { Application, Sprite } from "pixi.js";
 import { AssetLoader } from "./asset-loader";
 import { assets_location } from "./config";
+import { Door } from "./door";
 import { Dungeon } from "./dungeon";
 import { Scene } from "./scene";
 
@@ -24,6 +25,9 @@ function init() {
 
     const dungeon = new Dungeon(0, 0);
     gameScene.addChild(dungeon);
+
+    const door = new Door(32, 0);
+    gameScene.addChild(door);
 
     const gameOverScene = new Scene();
     gameOverScene.visible = false;
